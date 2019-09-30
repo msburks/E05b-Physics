@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MARGIN = 20
-INITIAL_VELOCITY = 3
+INITIAL_VELOCITY = 6
 NUM_ANIMALS = 5
 SCREEN_TITLE = "Collision Exercise"
 
@@ -34,7 +34,7 @@ class Window(arcade.Window):
             y = random.randint(MARGIN,SCREEN_HEIGHT-MARGIN)
             dx = random.uniform(-INITIAL_VELOCITY, INITIAL_VELOCITY)
             dy = random.uniform(-INITIAL_VELOCITY, INITIAL_VELOCITY)
-            self.animal_sprite = arcade.Sprite("assets/{animal}.png".format(animal=animal), 0.5)
+            self.animal_sprite = arcade.Sprite("assets/{animal}.png".format(animal=animal), 0.6)
             self.animal_sprite.center_x = x
             self.animal_sprite.center_y = y
             self.animal_sprite.dx = dx
@@ -51,13 +51,13 @@ class Window(arcade.Window):
             collisions = a.collides_with_list(self.animal_list)
             for c in collisions:
                 if a.center_x > c.center_x:
-                    a.dx = abs(a.dx) * -1
+                    a.dx = abs(a.dx)/1.25 * -1
                 if a.center_x < c.center_x:
-                    a.dx = abs(a.dx)
+                    a.dx = abs(a.dx)/1.25 
                 if a.center_y > c.center_y:
-                    a.dy = abs(a.dy)
+                    a.dy = abs(a.dy)/1.25 
                 if a.center_y < c.center_y:
-                    a.dy = abs(a.dy) * -1
+                    a.dy = abs(a.dy)/1.25 * -1
 
 
 
